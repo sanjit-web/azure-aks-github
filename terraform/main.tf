@@ -4,7 +4,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "shopping-rg"
+  name     = "shopping-rg-dev"
   location = "East US"
 }
 
