@@ -4,9 +4,10 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "shopping-rg-dev"
+  name     = "shopping-rg-dev-01"
   location = "East US"
 }
+
 
 resource "azurerm_container_registry" "acr" {
   name                = "sanjitshopacr2026"
