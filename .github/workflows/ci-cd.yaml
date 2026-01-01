@@ -18,9 +18,8 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t shopping-app .
-        docker tag shopping-app $ACR/shopping-app:latest
-        docker push $ACR/shopping-app:latest
+         cd app
+    docker build -t shopping-app .
 
     - name: Terraform Apply
       run: |
