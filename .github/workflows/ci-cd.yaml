@@ -1,0 +1,29 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t shopping-app .
+        docker tag shopping-app $ACR/shopping-app:latest
+        docker push $ACR/shopping-app:latest
+
+    - name: Terraform Apply
+      run: |
+        cd terraform
+        terraform init
+        terraform apply -auto-approve

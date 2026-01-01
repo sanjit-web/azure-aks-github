@@ -1,0 +1,8 @@
+{
+  "name": "shopping-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

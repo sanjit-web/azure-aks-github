@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopping
+  template:
+    metadata:
+      labels:
+        app: shopping
+    spec:
+      containers:
+      - name: shopping
+        image: <ACR_LOGIN_SERVER>/shopping-app:latest
+        ports:
+        - containerPort: 3000
