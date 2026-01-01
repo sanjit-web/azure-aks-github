@@ -1,5 +1,6 @@
 provider "azurerm" {
   features {}
+  subscription_id = "e037b35a-77b0-41f3-96f0-ec1b908f17f6"
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -24,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   default_node_pool {
     name       = "default"
     node_count = 1
-    vm_size    = "Standard_B2s"
+    vm_size    = "Standard_DC2s_v3"
   }
 
   identity {
