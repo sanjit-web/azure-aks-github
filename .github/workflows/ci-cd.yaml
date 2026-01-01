@@ -31,6 +31,9 @@ jobs:
         run: |
           docker push shoppingacr123.azurecr.io/shopping-app:latest
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
       - name: Terraform Init and Apply
         run: |
           cd terraform
