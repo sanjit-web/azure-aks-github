@@ -18,19 +18,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Login to Azure Container Registry
-        run: |
-            az acr login --name sanjitshopacr2026
-
-      - name: Build Docker Image
-        run: |
-          cd app
-          docker push sanjitshopacr2026.azurecr.io/shopping-app:latest
-
-      - name: Push Docker Image to ACR
-        run: |
-          docker push shoppingacr123.azurecr.io/shopping-app:latest
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
@@ -39,3 +26,18 @@ jobs:
           cd terraform
           terraform init
           terraform apply -auto-approve
+
+      - name: Login to Azure Container Registry
+        run: |
+          az acr login --name sanjitshopacr2026
+
+      - name: Build Docker Image
+        run: |
+          cd app
+          docker build -t sanjitshopacr2026.azurecr.io/shopping-app:latest .
+
+      - name: Push Docker Image to ACR
+        run: |
+          docker push sanjitshopacr2026.azurecr.io/shopping-app:latest
+
+    
