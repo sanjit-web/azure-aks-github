@@ -20,12 +20,12 @@ jobs:
 
       - name: Login to Azure Container Registry
         run: |
-          az acr login --name shoppingacr123
+            az acr login --name sanjitshopacr2026
 
       - name: Build Docker Image
         run: |
           cd app
-          docker build -t shoppingacr123.azurecr.io/shopping-app:latest .
+          docker push sanjitshopacr2026.azurecr.io/shopping-app:latest
 
       - name: Push Docker Image to ACR
         run: |
